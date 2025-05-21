@@ -15,7 +15,7 @@ def run_game()->None:
     screen=pygame.display.set_mode(screen_size)
 
     #Título del juego
-    game_title="Juego nuevo"
+    game_title="Soldiers vs aliens"
     pygame.display.set_caption(game_title)
 
     #Ciclo principal del juego

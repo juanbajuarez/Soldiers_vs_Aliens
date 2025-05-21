@@ -5,6 +5,8 @@
 
 import pygame
 from Configurations import Configurations
+from Media import Background
+from Soldier import Soldier
 def game_event()->bool:
     """
     Función que administra los eventos del juego.
@@ -19,12 +21,17 @@ def game_event()->bool:
     #Se regresa la bandera
     return game_over
 
-def screen_refresh(screen: pygame.surface.Surface)->None:
+def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,background:Background,soldier:Soldier)->None:
     """
     Función que administra los elementos visuales del juego
     """
-    #Fondo de la pantalla en rgb
-    screen.fill(Configurations.get_background())
+
+    # Se dibuja el fondo de la pantalla
+    background.blit(screen)
+    soldier.blit(screen)
 
     # Se actualiza la pantalla
     pygame.display.flip()
+
+    # Se controla la velocidad de fotogramas (FPS) del videojuego.
+    clock.tick(Configurations.get_fps())
