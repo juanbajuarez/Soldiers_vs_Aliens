@@ -1,40 +1,41 @@
-# bits & bytes
-# Fecha: Mayo de 2025
-# Descripción: version 02 Juego del gato
-
+# Juan Bautista Juárez
+# Fecha: 21 de Mayo de 2025
+# Descripción: version O2 Juego Soldados vs Aliens
+# Código refactorizado.
 
 import pygame
-from Configurations import Configurations
-from Game_functionalities import game_event,screen_refresh
-from Media import Background
-from Soldier import Soldier
 def run_game()->None:
     """
-    Función principal.
-    :return:Nada.
+    Función principal
     """
     #Inicia modulo pygame
     pygame.init()
 
-    # Se inicializa la pantalla
-    screen = pygame.display.set_mode(Configurations.get_screen_size())
-    pygame.display.set_caption(Configurations.get_game_title())
-    clock = pygame.time.Clock()
+    #Se inicializa la pantalla
+    screen_size=(1280,720) #Alto por ancho
+    screen=pygame.display.set_mode(screen_size)
 
-    background = Background()
-    soldier = Soldier(screen)
-    # Ciclo principal del juego
+    #Título del juego
+    game_title="Soldiers vs aliens"
+    pygame.display.set_caption(game_title)
 
-    game_over = False
-
+    #Ciclo principal del juego
+    game_over=False
     while not game_over:
-        game_over = game_event()
-        # Se dibuja los elementos gráficos en la pantalla
-        screen_refresh(screen, clock, background,soldier)
-        # Se cierran los recursos del juego
+        # Se verifican los eventos(teclado y ratón) del juego
+        for event in pygame.event.get():
+            #Un clic en cerrar el juego
+            if event.type==pygame.QUIT:
+                game_over=True
+        #Se dibuja los elementos gráficos em la pantalla
+        background=(255,100,100)#Fondo de la pantalla en RGB
+        screen.fill(background)
+
+        #Se actualiza la pantalla
+        pygame.display.flip()
+    #Se cierran los recursos del juego
     pygame.quit()
 
-
-# Código a nivel módulo.
+#Código a nivel de módulo.
 if __name__ == '__main__':
     run_game()

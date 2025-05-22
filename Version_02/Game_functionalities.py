@@ -1,12 +1,11 @@
-# bits & bytes
-# Fecha: Mayo de 2025
-# Descripción: version 02 Juego del gato.
+# Juan Bautista Juárez
+# Fecha: 21 de Mayo de 2025
+# Descripción: version O2 Juego Soldados vs Aliens
 # Funcionalidades del juego
 
 import pygame
 from Configurations import Configurations
-from Media import Background
-from Soldier import Soldier
+
 def game_event()->bool:
     """
     Función que administra los eventos del juego.
@@ -21,17 +20,14 @@ def game_event()->bool:
     #Se regresa la bandera
     return game_over
 
-def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,background:Background,soldier:Soldier)->None:
+def screen_refresh(screen: pygame.surface.Surface)->None:
     """
     Función que administra los elementos visuales del juego
     """
 
     # Se dibuja el fondo de la pantalla
-    background.blit(screen)
-    soldier.blit(screen)
-
+    screen.fill(Configurations.get_background())
     # Se actualiza la pantalla
     pygame.display.flip()
 
     # Se controla la velocidad de fotogramas (FPS) del videojuego.
-    clock.tick(Configurations.get_fps())

@@ -1,5 +1,5 @@
-# # bits & bytes
-# Fecha: Mayo de 2025
+# Juan Bautista Juárez
+# Fecha: 21 de Mayo de 2025
 # Descripción: version 03 Juego del gato
 # Media del juego
 

@@ -1,11 +1,12 @@
-# bits & bytes
-# Fecha: Mayo de 2025
+# Juan Bautista Juárez
+# Fecha: 21 de Mayo de 2025
 # Descripción: version 03 Juego del gato
 # Funcionalidades del juego.
 
 import pygame
 from Configurations import Configurations
 from Media import Background
+from Soldier import Soldier
 
 
 def game_event()->bool:
@@ -22,7 +23,7 @@ def game_event()->bool:
     #Se regresa la bandera
     return game_over
 
-def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,background:Background)->None:
+def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,background:Background,soldier:Soldier)->None:
     """
     Función que administra los elementos visuales del juego
     """
@@ -30,6 +31,8 @@ def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,backg
     # Se dibuja el fondo de la pantalla
     background.blit(screen)
 
+    #Se dibuja el soldado
+    soldier.blit(screen)
     # Se actualiza la pantalla
     pygame.display.flip()
 

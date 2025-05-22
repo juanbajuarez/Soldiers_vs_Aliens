@@ -1,6 +1,7 @@
-# bits & bytes
-# Fecha: Mayo de 2025
-# Descripción: version O1 Juego
+# Juan Bautista Juárez
+# Fecha: 21 de Mayo de 2025
+# Descripción: version O1 Juego Soldados vs Aliens
+# Se crea la pantalla principal
 
 import pygame
 def run_game()->None:

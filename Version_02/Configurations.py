@@ -1,7 +1,6 @@
-# bits & bytes
-# Fecha: Mayo de 2025
-# Descripción: version 02 Juego del gato
-# Configuraciones del juego
+# Juan Bautista Juárez
+# Fecha: 21 de Mayo de 2025
+# Descripción: version O2 Juego Soldados vs Aliens# Configuraciones del juego
 
 class Configurations:
     """
@@ -10,10 +9,8 @@ class Configurations:
     #Configuraciones de la pantalla
     _screen_size = (1280, 720)            # Alto por ancho
     _game_title = "Soldiers vs aliens"  #Título del juego
-    _background_image_path ="../Media/background.jpg"        #Fondo de la pantalla en
-    _soldiers_image_path="../Media/soldiers.png"
-    _soldiers_block_size=40
-    _fps=8
+    _background= (255,100,100)
+
     #Métodos de acceso
     @classmethod
     def get_screen_size(cls)->tuple[int,int]:
@@ -31,33 +28,11 @@ class Configurations:
         return cls._game_title
 
     @classmethod
-    def get_background_image_path(cls) -> str:
+    def get_background(cls) -> tuple[int,int,int]:
         """
         Getter para _background
-        return:
+        :return:
         """
-        return cls._background_image_path
+        return cls._background
 
-    @classmethod
-    def get_soldiers_image_path(cls) -> str:
-        """
-        Getter para _background
-        return:
-        """
-        return cls._soldiers_image_path
 
-    @classmethod
-    def get_soldiers_block_size(cls) ->int:
-        """
-        Getter para _background
-        return:
-        """
-        return cls._soldiers_block_size
-
-    @classmethod
-    def get_fps(cls) -> int:
-        """
-        Getter para _background
-        return:
-        """
-        return cls._fps
