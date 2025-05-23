@@ -23,6 +23,11 @@ def game_event()->bool:
 
         if event.type==pygame.KEYDOWN:
             if event.type==pygame.K_UP:
+                Soldier.is_moving_up=True
+            if event.type==pygame.K_UP:
+                Soldier.is_moving_down=True
+        if event.type==pygame.KEYUP:
+            if event.type==pygame.K_UP:
                 Soldier.is_moving_up=False
             if event.type==pygame.K_UP:
                 Soldier.is_moving_down=False
