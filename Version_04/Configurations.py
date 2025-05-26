@@ -1,6 +1,6 @@
 # Juan Bautista Juárez
 # Fecha: 21 de Mayo de 2025
-# Descripción: version 3 Juego del gato
+# Descripción: version 04 Juego del gato
 # Configuraciones del juego.
 
 class Configurations:

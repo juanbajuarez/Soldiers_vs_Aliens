@@ -1,6 +1,6 @@
 # Juan Bautista Juárez
 # Fecha: 21 de Mayo de 2025
-# Descripción: version 03 Juego del gato
+# Descripción: version 04 Juego del gato
 # Funcionalidades del juego.
 
 import pygame
@@ -9,7 +9,7 @@ from Media import Background
 from Soldier import Soldier
 
 
-def game_event()->bool:
+def game_event(soldier:Soldier)->bool:
     """
     Función que administra los eventos del juego.
     :return: La bandera del fin del juego
@@ -17,21 +17,21 @@ def game_event()->bool:
     game_over=False
     # Se verifican los eventos(teclado y ratón) del juego
     for event in pygame.event.get():
-        # Un clic en cerrar el juego
-        if event.type == pygame.QUIT:
-            game_over = True
 
         if event.type==pygame.KEYDOWN:
             if event.type==pygame.K_UP:
-                Soldier.is_moving_up=True
+                soldier.is_moving_up=True
             if event.type==pygame.K_UP:
-                Soldier.is_moving_down=True
+                soldier.is_moving_down=True
         if event.type==pygame.KEYUP:
             if event.type==pygame.K_UP:
-                Soldier.is_moving_up=False
+                soldier.is_moving_up=False
             if event.type==pygame.K_UP:
-                Soldier.is_moving_down=False
+                soldier.is_moving_down=False
 
+         # Un clic en cerrar el juego
+        if event.type == pygame.QUIT:
+            game_over = True
     #Se regresa la bandera
     return game_over
 

@@ -28,22 +28,22 @@ class Soldier(Sprite):
         self._is_moving_up=False
         self._is_moving_down=False
 
-        #metodo de instancia.
-        @property
-        def is_moving_up(self):
-            return self._is_moving_up
+    #metodo de instancia.
+    @property
+    def is_moving_up(self):
+        return self._is_moving_up
 
-        @is_moving_up.setter
-        def is_moving_up(value):
-            self._is_moving_up=value
+    @is_moving_up.setter
+    def is_moving_up(self,value):
+        self._is_moving_up=value
 
-        @property
-        def is_moving_down(self):
-            return self._is_moving_down
+    @property
+    def is_moving_down(self):
+        return self._is_moving_down
 
-        @is_moving_down.setter
-        def is_moving_down(value):
-            self._is_moving_down = value
+    @is_moving_down.setter
+    def is_moving_down(self,value):
+        self._is_moving_down = value
 
 
 

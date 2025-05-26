@@ -1,6 +1,6 @@
 # Juan Bautista Juárez
 # Fecha: 21 de Mayo de 2025
-# Descripción: version 02 Juego del gato
+# Descripción: version 04 Juego del gato
 
 
 import pygame
@@ -11,7 +11,7 @@ from Soldier import Soldier
 def run_game()->None:
     """
     Función principal.
-    :return:Nada.
+    :return: Nada.
     """
     #Inicia modulo pygame
     pygame.init()
@@ -28,7 +28,7 @@ def run_game()->None:
     game_over = False
 
     while not game_over:
-        game_over = game_event()
+        game_over = game_event(soldier)
         # Se dibuja los elementos gráficos en la pantalla
         screen_refresh(screen, clock, background,soldier)
         # Se cierran los recursos del juego
