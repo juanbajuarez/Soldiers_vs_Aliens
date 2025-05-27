@@ -44,7 +44,7 @@ def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,backg
     background.blit(screen)
 
     #actualiza la posicion
-    soldier.update_position()
+    soldier.update_position(screen)
 
     #Se dibuja el soldado
     soldier.blit(screen)

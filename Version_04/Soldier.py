@@ -12,7 +12,7 @@ class Soldier(Sprite):
 
         """
         super().__init__()
-
+        self._speed=Configurations.get_soldier_speed()
         soldier_image_path=Configurations.get_soldier_image_path()
         self.image=pygame.image.load(soldier_image_path)
         self.image = pygame.transform.scale(self.image, Configurations.get_solder_size())
@@ -27,6 +27,10 @@ class Soldier(Sprite):
         #Banderas de movimiento
         self._is_moving_up=False
         self._is_moving_down=False
+
+        #Velocidad de movimiento del soldado
+        self._speed = Configurations.get_soldier_speed()
+        self._rect_y=float(self.rect.y)
 
     #metodo de instancia.
     @property
@@ -46,15 +50,24 @@ class Soldier(Sprite):
         self._is_moving_down = value
 
 
-
     def blit (self,screen:pygame.surface.Surface):
         """
         Se utiliza para dibujar el soldado en pantalla
         """
         screen.blit(self.image,self.rect)
 
-    def update_position(self):
+    def update_position(self,screen):
         if self._is_moving_up:
-            self.rect.y-=10
+            self._rect_y-=self._speed
         if self._is_moving_down:
-            self.rect.y+=10
+            self._rect_y+=self._speed
+
+        #Revisa los limites de la pantalla
+        screen_rect = screen.get_rect()
+        if self._rect_y<float(screen_rect.top):
+            self._rect_y = float(screen_rect.top)
+        if self._rect_y > float(screen_rect.bottom-self.image.get_height()):
+            self._rect_y = float(screen_rect.bottom-self.image.get_height())
+
+        self.rect.y=int(self._rect_y)
+

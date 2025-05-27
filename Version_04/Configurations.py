@@ -13,6 +13,7 @@ class Configurations:
     _background = (255, 100, 100)          #Fondo de la pantalla en RGB
     _fps = 8
     _solder_size=(250,250)
+    _soldier_speed=10
 
     # Rutas de las imágenes utilizadas para las clases Background, SnakeBlock y Apple.
     _background_image_path = "../Media/background_image.jpg"
@@ -70,3 +71,11 @@ class Configurations:
         :return:
         """
         return cls._solder_size
+
+    @classmethod
+    def get_soldier_speed(cls) -> int:
+        """
+        Getter para _solder_size
+        :return:
+        """
+        return cls._soldier_speed
