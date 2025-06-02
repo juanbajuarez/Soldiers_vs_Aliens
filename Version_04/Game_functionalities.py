@@ -17,21 +17,21 @@ def game_event(soldier:Soldier)->bool:
     game_over=False
     # Se verifican los eventos(teclado y ratón) del juego
     for event in pygame.event.get():
-
-        if event.type==pygame.KEYDOWN:
-            if event.type==pygame.K_UP:
-                soldier.is_moving_up=True
-            if event.type==pygame.K_UP:
-                soldier.is_moving_down=True
-        if event.type==pygame.KEYUP:
-            if event.type==pygame.K_UP:
-                soldier.is_moving_up=False
-            if event.type==pygame.K_UP:
-                soldier.is_moving_down=False
-
-         # Un clic en cerrar el juego
+        # Un clic en cerrar el juego
         if event.type == pygame.QUIT:
             game_over = True
+
+        if event.type==pygame.KEYDOWN:
+            if event.key==pygame.K_UP:
+                soldier.is_moving_up=True
+            if event.key==pygame.K_UP:
+                soldier.is_moving_down=True
+
+        if event.type==pygame.KEYUP:
+            if event.key==pygame.K_UP:
+                soldier.is_moving_up=False
+            if event.key==pygame.K_UP:
+                soldier.is_moving_down=False
     #Se regresa la bandera
     return game_over
 
@@ -45,6 +45,9 @@ def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,backg
 
     #actualiza la posicion
     soldier.update_position(screen)
+
+    #Animacion
+    soldier.update_animation()
 
     #Se dibuja el soldado
     soldier.blit(screen)

@@ -15,7 +15,7 @@ def run_game()->None:
     """
     #Inicia modulo pygame
     pygame.init()
-
+    screen_size=Configurations.get_screen_size()
     # Se inicializa la pantalla
     screen = pygame.display.set_mode(Configurations.get_screen_size())
     pygame.display.set_caption(Configurations.get_game_title())

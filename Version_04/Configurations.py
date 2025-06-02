@@ -13,11 +13,13 @@ class Configurations:
     _background = (255, 100, 100)          #Fondo de la pantalla en RGB
     _fps = 8
     _solder_size=(250,250)
-    _soldier_speed=10
+    _frames_per_row = 4
+    _soldier_frame_delay = 300
+    _soldier_speed = 12.5
 
     # Rutas de las imágenes utilizadas para las clases Background, SnakeBlock y Apple.
     _background_image_path = "../Media/background_image.jpg"
-    _soldier_image_path= "../Media/solders_image.png"
+    _soldier_sheet_path="../Media/soldier-idle-sheet.png"
 
     #Métodos de acceso
 
@@ -50,12 +52,13 @@ class Configurations:
         Getter para _background_image_path.
         """
         return cls._background_image_path
+
     @classmethod
-    def get_soldier_image_path(cls) -> str:
+    def get_soldier_sheet_path(cls) -> str:
         """
-        Getter para _soldier_image_path.
+        Getter para _soldier_sheet_path.
         """
-        return cls._soldier_image_path
+        return cls._soldier_sheet_path
 
     @classmethod
     def get_fps(cls) -> int:
@@ -63,6 +66,13 @@ class Configurations:
         Getter para _fps.
         """
         return cls._fps
+
+    @classmethod
+    def get_frames_per_row(cls) -> int:
+        """
+        Getter para _frames_per_row.
+        """
+        return cls._frames_per_row
 
     @classmethod
     def get_solder_size(cls) -> tuple[int, int]:
@@ -73,9 +83,16 @@ class Configurations:
         return cls._solder_size
 
     @classmethod
-    def get_soldier_speed(cls) -> int:
+    def get_soldier_speed(cls) -> float:
         """
         Getter para _solder_size
         :return:
         """
         return cls._soldier_speed
+
+    @classmethod
+    def get_soldier_frame_delay(cls) -> int:
+        """
+        Getter para _soldier_frame_delay.
+        """
+        return cls._soldier_frame_delay
