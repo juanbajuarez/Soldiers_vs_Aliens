@@ -9,7 +9,7 @@ class Configurations:
     """
     #Configuraciones de la pantalla
     _screen_size = (1280, 720)            # Alto por ancho
-    _game_title = "Juego nuevo"  #Título del juego
+    _game_title = "Soldiers vs aliens"  #Título del juego
     _background = (255, 100, 100)          #Fondo de la pantalla en RGB
     _fps = 8
     _solder_size=(250,250)

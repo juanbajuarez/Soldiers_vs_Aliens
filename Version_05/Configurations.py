@@ -1,6 +1,6 @@
 # Juan Bautista Juárez
 # Fecha: 21 de Mayo de 2025
-# Descripción: version 04 Juego del gato
+# Descripción: version 05 Juego del gato
 # Configuraciones del juego.
 
 class Configurations:
@@ -11,16 +11,19 @@ class Configurations:
     _screen_size = (1280, 720)            # Alto por ancho
     _game_title = "Soldiers vs aliens"  #Título del juego
     _background = (255, 100, 100)          #Fondo de la pantalla en RGB
-    _fps = 24
+    _fps = 100
     _solder_size=(250,250)
+    _shot_size=(70,70)
     _frames_per_row = 4
     _soldier_frame_delay = 300
+    _shot_frame_delay = 150
     _soldier_speed = 24.5
+    _shot_speed = 100
 
     # Rutas de las imágenes utilizadas para las clases Background, SnakeBlock y Apple.
     _background_image_path = "../Media/background_image.jpg"
     _soldier_sheet_path="../Media/soldier-idle-sheet.png"
-
+    _shot_sheet_path="../Media/shot-sheet.png"
     #Métodos de acceso
 
     @classmethod
@@ -61,6 +64,13 @@ class Configurations:
         return cls._soldier_sheet_path
 
     @classmethod
+    def get_shot_sheet_path(cls) -> str:
+        """
+        Getter para _shot_sheet_path.
+        """
+        return cls._shot_sheet_path
+
+    @classmethod
     def get_fps(cls) -> int:
         """
         Getter para _fps.
@@ -83,6 +93,13 @@ class Configurations:
         return cls._solder_size
 
     @classmethod
+    def get_shot_size(cls) -> tuple[int, int]:
+        """
+        Getter para _shot_size
+        :return:
+        """
+        return cls._shot_size
+    @classmethod
     def get_soldier_speed(cls) -> float:
         """
         Getter para _solder_size
@@ -91,8 +108,24 @@ class Configurations:
         return cls._soldier_speed
 
     @classmethod
+    def get_shot_speed(cls) -> float:
+        """
+        Getter para _shot_speed
+        :return:
+        """
+        return cls._shot_speed
+
+
+    @classmethod
     def get_soldier_frame_delay(cls) -> int:
         """
         Getter para _soldier_frame_delay.
         """
         return cls._soldier_frame_delay
+
+    @classmethod
+    def get_shot_frame_delay(cls) -> int:
+        """
+        Getter para _shot_frame_delay.
+        """
+        return cls._shot_frame_delay
