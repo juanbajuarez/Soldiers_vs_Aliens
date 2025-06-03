@@ -9,6 +9,7 @@ class Shot(Sprite):
 
         super().__init__()
 
+        self._is_moving_shot = False
 
         # Lista que almacena los frames del soldado.
         self._frames = []
@@ -48,9 +49,28 @@ class Shot(Sprite):
         # Se obtiene el rectángulo que representa la posición del sprite.
         self.rect = self.image.get_rect()
 
+        # Se inicializa la posición inicial, en este caso, a la derecha de la pantalla.
+        screen_rect = screen.get_rect()
+        self.rect.right = screen_rect.right-200
+        self.rect.centery = screen_rect.centery-45
+
         # Se incluyen los atributos para el movimiento.
-        self._rect_y = float(self.rect.y)
+        self._rect_x = float(self.rect.x)
         self._speed = Configurations.get_shot_speed()
+
+    def update_position(self, screen: pygame.surface.Surface) -> None:
+        """
+        Se utiliza para actualizar la posición del soldado de acuerdo a las banderas de movimiento.
+        :param screen: Pantalla en donde se verifican los límites.
+        """
+        # Se obtiene el rectángulo del borde de la pantalla
+        screen_rect = screen.get_rect()
+
+        # Se verifican los estados de la bandera para modificar la posición.
+        if self._is_moving_shot:
+            self._rect_x -= self._speed
+            self.rect.x = int(self._rect_x)
+
 
     def update_animation(self) -> None:
         """
@@ -79,4 +99,19 @@ class Shot(Sprite):
         :param screen: Pantalla en donde se dibuja el bloque.
         """
         # Se dibuja sobre la pantalla.
-        screen.blit(self.image, self.rect)
+        if self._is_moving_shot:
+            screen.blit(self.image, self.rect)
+
+    @property
+    def is_moving_shot(self) -> bool:
+        """
+        Getter para self._is_moving_shot.
+        """
+        return self._is_moving_shot
+
+    @is_moving_shot.setter
+    def is_moving_shot(self, value: bool) -> None:
+        """
+        Setter para self._is_moving_shot
+        """
+        self._is_moving_shot = value

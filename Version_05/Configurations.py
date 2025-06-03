@@ -18,7 +18,7 @@ class Configurations:
     _soldier_frame_delay = 300
     _shot_frame_delay = 150
     _soldier_speed = 24.5
-    _shot_speed = 100
+    _shot_speed = 10
 
     # Rutas de las imágenes utilizadas para las clases Background, SnakeBlock y Apple.
     _background_image_path = "../Media/background_image.jpg"

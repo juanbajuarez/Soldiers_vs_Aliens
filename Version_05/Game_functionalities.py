@@ -10,7 +10,7 @@ from Soldier import Soldier
 from Shot import Shot
 
 
-def game_event(soldier:Soldier)->bool:
+def game_event(soldier:Soldier,shot:Shot)->bool:
     """
     Función que administra los eventos del juego.
     :return: La bandera del fin del juego
@@ -27,6 +27,8 @@ def game_event(soldier:Soldier)->bool:
                 soldier.is_moving_up=True
             if event.key==pygame.K_DOWN:
                 soldier.is_moving_down=True
+            if event.key == pygame.K_SPACE:
+                shot._is_moving_shot=True
 
         if event.type==pygame.KEYUP:
             if event.key==pygame.K_UP:
@@ -46,6 +48,7 @@ def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,backg
 
     #actualiza la posicion
     soldier.update_position(screen)
+    shot.update_position(screen)
 
     #Animacion
     soldier.update_animation()

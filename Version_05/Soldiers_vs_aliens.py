@@ -30,7 +30,7 @@ def run_game()->None:
     game_over = False
 
     while not game_over:
-        game_over = game_event(soldier)
+        game_over = game_event(soldier,shot)
         # Se dibuja los elementos gráficos en la pantalla
         screen_refresh(screen, clock, background,soldier,shot)
         # Se cierran los recursos del juego
