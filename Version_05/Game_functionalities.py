@@ -48,7 +48,10 @@ def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,backg
 
     #actualiza la posicion
     soldier.update_position(screen)
-    shot.update_position(screen)
+    shot.position_shot(screen)
+
+    #Revisar y refactorizar los metodos por el nombre
+    #Y sustituir en sus llamadas
 
     #Animacion
     soldier.update_animation()
@@ -57,7 +60,7 @@ def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,backg
     soldier.blit(screen)
 
     #Animacion
-    shot.update_animation()
+    shot.animation_shot()
 
     #Se dibuja la bala
     shot.blit(screen)

@@ -1,7 +1,7 @@
 # Juan Bautista Juárez
 # Fecha: 21 de Mayo de 2025
 # Descripción: version 05 Juego del gato
-
+from email.headerregistry import Group
 
 import pygame
 from Configurations import Configurations
@@ -9,6 +9,7 @@ from Game_functionalities import game_event,screen_refresh
 from Media import Background
 from Soldier import Soldier
 from Shot import Shot
+from pygame.sprite import Group
 def run_game()->None:
     """
     Función principal.
@@ -24,7 +25,13 @@ def run_game()->None:
 
     background = Background()
     soldier = Soldier(screen)
+
+    #Se crea el grupo para los shots
+    #Mofificar estas líneas para que se aplique a los grupos
+
     shot=Shot(screen)
+    shots=Group()
+    shots.add(shot)
     # Ciclo principal del juego
 
     game_over = False

@@ -58,7 +58,7 @@ class Shot(Sprite):
         self._rect_x = float(self.rect.x)
         self._speed = Configurations.get_shot_speed()
 
-    def update_position(self, screen: pygame.surface.Surface) -> None:
+    def position_shot(self, screen: pygame.surface.Surface) -> None:
         """
         Se utiliza para actualizar la posición del soldado de acuerdo a las banderas de movimiento.
         :param screen: Pantalla en donde se verifican los límites.
@@ -72,7 +72,7 @@ class Shot(Sprite):
             self.rect.x = int(self._rect_x)
 
 
-    def update_animation(self) -> None:
+    def animation_shot(self) -> None:
         """
         Se utiliza para actualizar el frame visible del soldado, dando la impresión de animación.
         """
