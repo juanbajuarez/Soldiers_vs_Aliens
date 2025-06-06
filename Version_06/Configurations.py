@@ -15,6 +15,7 @@ class Configurations:
     _solder_size=(250,250)
     _shot_size=(70,70)
     _frames_per_row = 4
+    _frames_per_column = 2
     _soldier_frame_delay = 300
     _shot_frame_delay = 150
     _soldier_speed = 24.5
@@ -22,7 +23,7 @@ class Configurations:
 
     # Rutas de las imágenes utilizadas para las clases Background, SnakeBlock y Apple.
     _background_image_path = "../Media/background_image.jpg"
-    _soldier_sheet_path="../Media/soldier-idle-sheet.png"
+    _soldier_sheet_path="../Media/soldier-idle_shooting_sheet.png"
     _shot_sheet_path="../Media/shot-sheet.png"
     #Métodos de acceso
 
@@ -83,6 +84,13 @@ class Configurations:
         Getter para _frames_per_row.
         """
         return cls._frames_per_row
+
+    @classmethod
+    def get_frames_per_column(cls) -> int:
+        """
+        Getter para _frames_per_column.
+        """
+        return cls._frames_per_column
 
     @classmethod
     def get_solder_size(cls) -> tuple[int, int]:
