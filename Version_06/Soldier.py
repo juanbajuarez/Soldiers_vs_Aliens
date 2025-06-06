@@ -28,10 +28,11 @@ class Soldier(Sprite):
         """NUEVO."""
         # Se obtienen los datos para "recortar" cada sprite de la hoja de sprites.
         sheet_frames_per_row = Configurations.get_frames_per_row()
+        sheet_frames_per_column = Configurations.get_frames_per_column()
         sheet_width = soldier_sheet.get_width()
         sheet_height = soldier_sheet.get_height()
         soldier_frame_width = sheet_width // sheet_frames_per_row
-        soldier_frame_height = sheet_height
+        soldier_frame_height = sheet_height//sheet_frames_per_column
 
         """NUEVO."""
         # Se obtiene el tamaño para escalar cada frame.
@@ -39,17 +40,18 @@ class Soldier(Sprite):
 
         """NUEVO."""
         # Se recortan los sprites de la hoja, se escalan y se guardan en la lista de sprites.
-        for i in range(sheet_frames_per_row):
-            x = i * soldier_frame_width
-            y = 0
-            subsurface_rect = (x, y, soldier_frame_width, soldier_frame_height)
-            frame = soldier_sheet.subsurface(subsurface_rect)
+        for i in range(sheet_frames_per_column):
+            for j in range(sheet_frames_per_row):
+                x = j * soldier_frame_width
+                y = i * soldier_frame_height
+                subsurface_rect = (x, y, soldier_frame_width, soldier_frame_height)
+                frame = soldier_sheet.subsurface(subsurface_rect)
 
-            frame = pygame.transform.scale(frame, soldier_frame_size)
+                frame = pygame.transform.scale(frame, soldier_frame_size)
 
-            self._frames.append(frame)
+                self._frames.append(frame)
 
-        """NUEVO."""
+            """NUEVO."""
         # Se incluyen los atributos para la animación.
         self._last_update_time = pygame.time.get_ticks()  # Se relaciona con el tiempo de actualización de cada frame.
         self._frame_index = 0  # Índice de la lista.
