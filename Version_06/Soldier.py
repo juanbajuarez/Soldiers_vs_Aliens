@@ -16,7 +16,7 @@ class Soldier(Sprite):
         # Banderas de movimiento
         self._is_moving_up = False
         self._is_moving_down = False
-
+        self.is_shooting=False
         # Lista que almacena los frames del soldado.
         self._frames = []
 
@@ -102,9 +102,17 @@ class Soldier(Sprite):
         """
         Se utiliza para actualizar el frame visible del soldado, dando la impresión de animación.
         """
-        # Se verifica si el tiempo transcurrido es mayor o igual al tiempo establecido para actualizar el frame.
         current_time = pygame.time.get_ticks()
-        frame_delay = Configurations.get_soldier_frame_delay()
+
+        """CAMBIO. Se verifica el estado del personaje."""
+        # Se verifica el tiempo de cada frame dependiendo del estado del personaje.
+        if self._is_shooting:
+            frame_delay = Configurations.get_soldier_shooting_frame_delay()
+
+        else:
+            frame_delay = Configurations.get_soldier_frame_delay()
+
+        # Se verifica la condición para indicar si requiere actualizarse el frame.
         needs_refresh = (current_time - self._last_update_time) >= frame_delay
 
         if needs_refresh:
@@ -115,8 +123,15 @@ class Soldier(Sprite):
             self._frame_index += 1
 
             # Finalmente, se verica si el índice ha recorrido todos los frames para volver al inicio de la lista.
-            if self._frame_index >= len(self._frames):
+            sheet_frames_per_row = Configurations.get_frames_per_row()
+
+            if (not self._is_shooting and self._frame_index >= sheet_frames_per_row or
+                    self._is_shooting and self._frame_index >= 2 * sheet_frames_per_row):
                 self._frame_index = 0
+
+            elif (self._is_shooting and self._frame_index == 1):
+                self._is_shooting = False
+
 
     def blit(self, screen: pygame.surface.Surface) -> None:
         """
@@ -125,6 +140,20 @@ class Soldier(Sprite):
         """
         # Se dibuja sobre la pantalla.
         screen.blit(self.image, self.rect)
+
+    def shoots(self) -> None:
+        """
+        Se utiliza para indicar que el personaje está disparando, por lo que debe indicar este estado.
+        """
+        # Se modifica la bandera del estado del soldado.
+        self._is_shooting = True
+
+        # Se modifica el índice de los frames.
+        sheet_frames_per_row = Configurations.get_frames_per_row()
+        self._frame_index = sheet_frames_per_row
+
+        # Se resetea el tiempo de actualización del último frame.
+        self._last_update_time = pygame.time.get_ticks()
 
     @property
     def is_moving_up(self) -> bool:

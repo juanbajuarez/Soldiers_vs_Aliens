@@ -51,8 +51,8 @@ class Shot(Sprite):
         self.rect = self.image.get_rect()
 
         # Se inicializa la posición inicial, en este caso, a la derecha de la pantalla.
-        self.rect.right = soldier.soldier_rect.right-200
-        self.rect.centery =soldier.soldier_rect.centery-40
+        self.rect.right = soldier.soldier_rect.right-80
+        self.rect.centery =soldier.soldier_rect.centery-15
 
         # Se incluyen los atributos para el movimiento.
         self._rect_x = float(self.rect.x)

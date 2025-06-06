@@ -12,14 +12,15 @@ class Configurations:
     _game_title = "Soldiers vs aliens"  #Título del juego
     _background = (255, 100, 100)          #Fondo de la pantalla en RGB
     _fps = 100
-    _solder_size=(250,250)
-    _shot_size=(70,70)
+    _solder_size=(100,100)
+    _shot_size=(20,20)
     _frames_per_row = 4
     _frames_per_column = 2
     _soldier_frame_delay = 300
     _shot_frame_delay = 150
     _soldier_speed = 24.5
     _shot_speed = 10
+    _soldier_shooting_frame_delay = 34
 
     # Rutas de las imágenes utilizadas para las clases Background, SnakeBlock y Apple.
     _background_image_path = "../Media/background_image.jpg"
@@ -137,3 +138,10 @@ class Configurations:
         Getter para _shot_frame_delay.
         """
         return cls._shot_frame_delay
+
+    @classmethod
+    def get_soldier_shooting_frame_delay(cls) -> int:
+        """
+        Getter para _soldier_shooting_frame_delay.
+        """
+        return cls._soldier_shooting_frame_delay

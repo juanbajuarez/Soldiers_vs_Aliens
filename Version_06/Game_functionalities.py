@@ -31,6 +31,7 @@ def game_event(soldier:Soldier,shots:pygame.sprite.Group,screen)->bool:
                 shot=Shot(screen,soldier)
                 shot._is_moving_shot=True
                 shots.add(shot)
+                soldier.shoots()
 
         if event.type==pygame.KEYUP:
             if event.key==pygame.K_UP:
@@ -43,6 +44,7 @@ def game_event(soldier:Soldier,shots:pygame.sprite.Group,screen)->bool:
 def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,background:Background,soldier:Soldier,shots:pygame.sprite.Group)->None:
     """
     Función que administra los elementos visuales del juego
+
     """
 
     # Se dibuja el fondo de la pantalla
