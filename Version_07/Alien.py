@@ -1,3 +1,4 @@
+from random import choice
 import pygame
 from pygame.sprite import Sprite
 from Configurations import Configurations
@@ -12,9 +13,10 @@ class Alien(Sprite):
 
         # Lista que almacena los frames del soldado.
         self._frames = []
-
-        alien_path = Configurations.get_alien_sheet_path()
-        alien_sheet=pygame.image.load(alien_path)
+        alien_path=[]
+        alien_path.append(Configurations.get_alien_sheet_path())
+        alien_path.append(Configurations.get_alien2_sheet_path())
+        alien_sheet=pygame.image.load(choice(alien_path))
 
         """NUEVO."""
         # Se obtienen los datos para "recortar" cada sprite de la hoja de sprites.

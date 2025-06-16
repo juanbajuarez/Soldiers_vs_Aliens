@@ -16,7 +16,7 @@ class Soldier(Sprite):
         # Banderas de movimiento
         self._is_moving_up = False
         self._is_moving_down = False
-        self.is_shooting=False
+        self._is_shooting=False
         # Lista que almacena los frames del soldado.
         self._frames = []
 
