@@ -42,7 +42,7 @@ def game_event(soldier:Soldier,shots:pygame.sprite.Group,screen)->bool:
     #Se regresa la bandera
     return game_over
 
-def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,background:Background,soldier:Soldier,shots:pygame.sprite.Group,alien:Alien)->None:
+def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,background:Background,soldier:Soldier,shots:pygame.sprite.Group,aliens:pygame.sprite.Group)->None:
     """
     Función que administra los elementos visuales del juego
 
@@ -53,9 +53,10 @@ def screen_refresh(screen: pygame.surface.Surface,clock: pygame.time.Clock,backg
     soldier.update_animation()
     soldier.update_position(screen)
     soldier.blit(screen)
-    alien.update_position(screen)
-    alien.update_animation()
-    alien.blit(screen)
+    for alien in aliens.sprites():
+        alien.update_position(screen)
+        alien.update_animation()
+        alien.blit(screen)
 
     if len(shots.sprites()) > 0:
         for shot in shots.sprites():

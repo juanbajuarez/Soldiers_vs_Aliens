@@ -25,6 +25,14 @@ def run_game()->None:
     background = Background()
     soldier = Soldier(screen)
     alien = Alien(screen)
+    aliens=Group()
+    aliens.add(alien)
+    alien2=Alien(screen)
+    aliens.add(alien2)
+    alien3 = Alien(screen)
+    aliens.add(alien3)
+    alien4 = Alien(screen)
+    aliens.add(alien4)
 
     #Se crea el grupo para los shots
     #Mofificar estas líneas para que se aplique a los grupos
@@ -37,7 +45,7 @@ def run_game()->None:
         game_over = game_event(soldier,shots,screen)
 
         # Se dibuja los elementos gráficos en la pantalla
-        screen_refresh(screen, clock, background,soldier,shots,alien)
+        screen_refresh(screen, clock, background,soldier,shots,aliens)
         # Se cierran los recursos del juego
     pygame.quit()
 

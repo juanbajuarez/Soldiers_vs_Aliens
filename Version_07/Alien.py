@@ -1,4 +1,4 @@
-from random import choice
+from random import choice,uniform
 import pygame
 from pygame.sprite import Sprite
 from Configurations import Configurations
@@ -8,14 +8,15 @@ class Alien(Sprite):
     def __init__(self,screen:pygame.surface.Surface):
 
         super().__init__()
+        # Banderas de movimiento
+        movement=[True,False]
+        self._is_moving_up = choice(movement)
+        self._is_moving_down = not self._is_moving_up
 
-        self._is_moving_alien = True
 
         # Lista que almacena los frames del soldado.
         self._frames = []
-        alien_path=[]
-        alien_path.append(Configurations.get_alien_sheet_path())
-        alien_path.append(Configurations.get_alien2_sheet_path())
+        alien_path=Configurations.get_alien_sheet_path()
         alien_sheet=pygame.image.load(choice(alien_path))
 
         """NUEVO."""
@@ -58,7 +59,9 @@ class Alien(Sprite):
         """NUEVO."""
         # Se incluyen los atributos para el movimiento.
         self._rect_x = float(self.rect.x)
-        self._speed = Configurations.get_alien_speed()
+        self._rect_y = float(self.rect.y)
+        self._speed_x = (Configurations.get_alien_speed_x())*uniform(.8,1.2)
+        self._speed_y = (Configurations.get_alien_speed_y())*uniform(.6,1.4)
 
     def update_position(self, screen: pygame.surface.Surface) -> None:
         """
@@ -69,11 +72,32 @@ class Alien(Sprite):
         screen_rect = screen.get_rect()
 
         # Se verifican los estados de la bandera para modificar la posición.
-        if self._is_moving_alien:
-            self._rect_x += self._speed
+
+        self._rect_x += self._speed_x
 
         # Se actualiza la posición del rectángulo de acuerdo a la posición.
         self.rect.x = int(self._rect_x)
+
+        """Nuevo"""
+        # Se verifican los estados de la bandera para modificar la posición.
+        if self._is_moving_up:
+            self._rect_y -= self._speed_y
+
+        elif self._is_moving_down:
+            self._rect_y += self._speed_y
+
+        # Se verifica que el personaje no sobrepase los bordes de la pantalla.
+        if self._rect_y < float(screen_rect.top):
+            self._rect_y = float(screen_rect.y)
+            self._is_moving_down=True
+            self._is_moving_up=False
+        elif self._rect_y > (screen_rect.bottom - self.image.get_height()):
+            self._rect_y = float(screen_rect.bottom - self.image.get_height())
+            self._is_moving_down = False
+            self._is_moving_up =True
+        # Se actualiza la posición del rectángulo de acuerdo a la posición.
+        self.rect.y = int(self._rect_y)
+
 
     def update_animation(self) -> None:
         """

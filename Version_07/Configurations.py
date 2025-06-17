@@ -20,17 +20,20 @@ class Configurations:
     _soldier_frame_delay = 300
     _alien_frame_delay = 50
     _shot_frame_delay = 150
-    _soldier_speed = 24.5
+    _soldier_speed = 10.5
     _shot_speed = 10
-    _alien_speed = 1
+    _alien_speed_x = 2
+    _alien_speed_y = 3
     _soldier_shooting_frame_delay = 34
 
     # Rutas de las imágenes utilizadas para las clases Background, SnakeBlock y Apple.
     _background_image_path = "../Media/background_image.jpg"
     _soldier_sheet_path="../Media/soldier-idle_shooting_sheet.png"
     _shot_sheet_path="../Media/shot-sheet.png"
-    _alien_sheet_path="../Media/alien1-Sheet.png"
-    _alien2_sheet_path="../Media/alien2-Sheet.png"
+    _alien_sheet_path=["../Media/alien1-Sheet.png","../Media/alien2-Sheet.png",
+    "../Media/alien3-Sheet.png","../Media/alien4-Sheet.png",
+                       "../Media/alien4-Sheet.png"]
+
     #Métodos de acceso
 
     @classmethod
@@ -71,18 +74,12 @@ class Configurations:
         return cls._soldier_sheet_path
 
     @classmethod
-    def get_alien_sheet_path(cls) -> str:
+    def get_alien_sheet_path(cls) -> list:
         """
         Getter para _alien_sheet_path.
         """
         return cls._alien_sheet_path
 
-    @classmethod
-    def get_alien2_sheet_path(cls) -> str:
-        """
-        Getter para _alien2_sheet_path.
-        """
-        return cls._alien2_sheet_path
 
     @classmethod
     def get_shot_sheet_path(cls) -> str:
@@ -181,9 +178,17 @@ class Configurations:
         return cls._soldier_shooting_frame_delay
 
     @classmethod
-    def get_alien_speed(cls) -> float:
+    def get_alien_speed_x(cls) -> float:
         """
-        Getter para _shot_speed
+        Getter para _alien_speed_x
         :return:
         """
-        return cls._alien_speed
+        return cls._alien_speed_x
+
+    @classmethod
+    def get_alien_speed_y(cls) -> float:
+        """
+        Getter para _alien_speed_y
+        :return:
+        """
+        return cls._alien_speed_y
