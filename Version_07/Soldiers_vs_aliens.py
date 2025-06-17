@@ -9,6 +9,7 @@ from Media import Background
 from Soldier import Soldier
 from pygame.sprite import Group
 from Alien import Alien
+from random import randint
 def run_game()->None:
     """
     Función principal.
@@ -24,15 +25,13 @@ def run_game()->None:
 
     background = Background()
     soldier = Soldier(screen)
-    alien = Alien(screen)
+    """Nuevo"""
     aliens=Group()
-    aliens.add(alien)
-    alien2=Alien(screen)
-    aliens.add(alien2)
-    alien3 = Alien(screen)
-    aliens.add(alien3)
-    alien4 = Alien(screen)
-    aliens.add(alien4)
+    min_aliens=Configurations.get_min_aliens()
+    aliens_to_spawn=min_aliens+randint(0,8)
+    for _ in range(aliens_to_spawn):
+        alien=Alien(screen)
+        aliens.add(alien)
 
     #Se crea el grupo para los shots
     #Mofificar estas líneas para que se aplique a los grupos

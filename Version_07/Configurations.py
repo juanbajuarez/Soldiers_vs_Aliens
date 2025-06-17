@@ -8,7 +8,7 @@ class Configurations:
     Clase que contiene todas las configuraciones del juego
     """
     #Configuraciones de la pantalla
-    _screen_size = (1280, 720)            # Alto por ancho
+    _screen_size = (720, 480)            # Alto por ancho
     _game_title = "Soldiers vs aliens"  #Título del juego
     _background = (255, 100, 100)          #Fondo de la pantalla en RGB
     _fps = 100
@@ -22,9 +22,10 @@ class Configurations:
     _shot_frame_delay = 150
     _soldier_speed = 10.5
     _shot_speed = 10
-    _alien_speed_x = 2
-    _alien_speed_y = 3
+    _alien_speed_x = 1
+    _alien_speed_y = 2
     _soldier_shooting_frame_delay = 34
+    _min_aliens = 5
 
     # Rutas de las imágenes utilizadas para las clases Background, SnakeBlock y Apple.
     _background_image_path = "../Media/background_image.jpg"
@@ -192,3 +193,10 @@ class Configurations:
         :return:
         """
         return cls._alien_speed_y
+
+    @classmethod
+    def get_min_aliens(cls) -> int:
+        """
+        Getter para _min_aliens.
+        """
+        return cls._min_aliens

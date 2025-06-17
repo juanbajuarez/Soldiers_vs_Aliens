@@ -1,4 +1,4 @@
-from random import choice,uniform
+from random import choice,uniform,randint
 import pygame
 from pygame.sprite import Sprite
 from Configurations import Configurations
@@ -53,8 +53,11 @@ class Alien(Sprite):
 
         # Se inicializa la posición inicial, en este caso, a la derecha de la pantalla.
         screen_rect = screen.get_rect()
-        self.rect.left = screen_rect.left
+
         self.rect.centery = screen_rect.centery
+
+        self.rect.y = alien_frame_size[1] * randint(0, (screen.get_height() // alien_frame_size[1]) - 1)
+        #self.rect.x = -alien_frame_size[0]
 
         """NUEVO."""
         # Se incluyen los atributos para el movimiento.
