@@ -1,10 +1,11 @@
 # Juan Bautista Juárez
 # Fecha: 21 de Mayo de 2025
 # Descripción: version 05 Juego del alien
+from time import sleep
 
 import pygame
 from Configurations import Configurations
-from Game_functionalities import game_event,screen_refresh
+from Game_functionalities import game_event,screen_refresh,check_collitions
 from Media import Background
 from Soldier import Soldier
 from pygame.sprite import Group
@@ -35,16 +36,21 @@ def run_game()->None:
 
     #Se crea el grupo para los shots
     #Mofificar estas líneas para que se aplique a los grupos
-    shots=Group()
+    gunshots=Group()
     # Ciclo principal del juego
+
 
     game_over = False
 
     while not game_over:
-        game_over = game_event(soldier,shots,screen)
+        game_over = game_event(soldier,gunshots,screen)
+        if game_over:
+            break
         # Se dibuja los elementos gráficos en la pantalla
-        screen_refresh(screen, clock, background,soldier,shots,aliens)
-        # Se cierran los recursos del juego
+        screen_refresh(screen, clock, background,soldier,gunshots,aliens)
+        if game_over:
+            sleep(3)
+        game_over=check_collitions(screen,soldier,gunshots,aliens)
     pygame.quit()
 
 
