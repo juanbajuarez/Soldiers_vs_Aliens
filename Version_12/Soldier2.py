@@ -7,9 +7,9 @@ class Soldier2(Sprite):
     Segundo personaje jugable con controles alternativos.
     """
 
-    # ─────────────────────────────────────────────
-    # 1. Constructor
-    # ─────────────────────────────────────────────
+
+    # Constructor
+
     def __init__(self, screen: pygame.Surface):
         """
         Inicializa el segundo soldado con sus atributos, animaciones y posición.
@@ -61,9 +61,9 @@ class Soldier2(Sprite):
         self._last_update_time = pygame.time.get_ticks()
         self._frame_index = 0
 
-    # ─────────────────────────────────────────────
+
     # 2. Movimiento vertical
-    # ─────────────────────────────────────────────
+
     def update_position(self, screen: pygame.Surface) -> None:
         """
         Actualiza la posición vertical según banderas de movimiento.
@@ -86,9 +86,9 @@ class Soldier2(Sprite):
 
         self.rect.y = int(self._rect_y)
 
-    # ─────────────────────────────────────────────
-    # 3. Animación del personaje
-    # ─────────────────────────────────────────────
+
+    # Animación del personaje
+
     def update_animation(self) -> None:
         """
         Actualiza el frame de animación del personaje según el estado.
@@ -114,9 +114,9 @@ class Soldier2(Sprite):
             elif self._is_shooting and self._frame_index == frames_per_row + 1:
                 self._is_shooting = False
 
-    # ─────────────────────────────────────────────
-    # 4. Acción de disparo
-    # ─────────────────────────────────────────────
+
+    # Acción de disparo
+
     def shoots(self) -> None:
         """
         Activa el estado de disparo y ajusta la animación.
@@ -125,18 +125,18 @@ class Soldier2(Sprite):
         self._frame_index = Configurations.get_frames_per_row()
         self._last_update_time = pygame.time.get_ticks()
 
-    # ─────────────────────────────────────────────
-    # 5. Dibujar en pantalla
-    # ─────────────────────────────────────────────
+
+    # Dibujar en pantalla
+
     def blit(self, screen: pygame.Surface) -> None:
         """
         Dibuja el personaje en la pantalla.
         """
         screen.blit(self.image, self.rect)
 
-    # ─────────────────────────────────────────────
-    # 6. Getters y Setters
-    # ─────────────────────────────────────────────
+
+    # Getters y Setters
+
     @property
     def is_moving_up(self) -> bool:
         return self._is_moving_up

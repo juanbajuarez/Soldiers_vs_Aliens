@@ -6,16 +6,16 @@ class Configurations:
     pantalla, personajes, imágenes, sonidos y controles.
     """
 
-    # ─────────────────────────────────────────────
-    # 1. Configuración general de la pantalla
-    # ─────────────────────────────────────────────
+
+    # Configuración general de la pantalla
+
     _game_title = "Soldados vs aliens"
     _screen_size = (1280, 720)
     _fps = 30
 
-    # ─────────────────────────────────────────────
-    # 2. Configuración del soldado (jugadores)
-    # ─────────────────────────────────────────────
+
+    # Configuración del soldado (jugadores)
+
     _soldier_size = (140, 80)
     _soldier2_size = (140, 80)
     _frames_per_row = 4
@@ -23,16 +23,16 @@ class Configurations:
     _soldier_frame_delay = 100
     _soldier_speed = 12.5
 
-    # ─────────────────────────────────────────────
-    # 3. Configuración de los aliens
-    # ─────────────────────────────────────────────
+
+    # Configuración de los aliens
+
     _alien_speed_x = 9.5
     _alien_speed_y = 9.5
     _min_aliens = 5
 
-    # ─────────────────────────────────────────────
-    # 4. Configuración de disparos
-    # ─────────────────────────────────────────────
+
+    # Configuración de disparos
+
     _shot_size = (32, 32)
     _power_up_size = (100,100)
     _shot_speed = 14.5
@@ -40,9 +40,8 @@ class Configurations:
     _time_power_up=6000
     _time_in_time_power=500
 
-    # ─────────────────────────────────────────────
-    # 5. Rutas de imágenes
-    # ─────────────────────────────────────────────
+    # Rutas de imágenes
+
     _background_image_path = "../media/background.png"
     _soldier_sheet_path = "../media/soldier-idle_shooting_sheet.png"
     _soldier_sheet_path1 = "../media/soldier-idle_shooting_sheet2.png"
@@ -58,18 +57,18 @@ class Configurations:
     _game_over_image_path = "../media/game_over.png"
     _power_up_image_path="../media/powerup.png"
 
-    # ─────────────────────────────────────────────
-    # 6. Configuración de animación de Game Over
-    # ─────────────────────────────────────────────
+
+    # Configuración de animación de Game Over
+
     _game_over_size = (500, 300)
     _frames_per_row_kills = 6
     _game_over_frame_count = 10
     _game_over_frames_folder = "../media/gameover"
     _winner=20
 
-    # ─────────────────────────────────────────────
-    # 7. Configuración de audio
-    # ─────────────────────────────────────────────
+
+    # Configuración de audio
+
     _sound_shot_path = "../media/sound_shot.mp3"
     _sound_alien_hit_path = "../media/sound_alien_hit.mp3"
     _sound_game_over_path = "../media/sound_game_over.mp3"
@@ -77,25 +76,25 @@ class Configurations:
     _sound_volume = 0.4
     _music_volume = 0.3
 
-    # ─────────────────────────────────────────────
-    # 8. Configuración del marcador
-    # ─────────────────────────────────────────────
+
+    # Configuración del marcador
+
     _score_font_size = 36
     _score_text_color = (255, 255, 255)
     _score_position = (10, 10)
 
-    # ─────────────────────────────────────────────
-    # 9. Controles del segundo jugador
-    # ─────────────────────────────────────────────
+
+    # Controles del segundo jugador
+
     _second_player_controls = {
         "move_up": pygame.K_w,
         "move_down": pygame.K_s,
         "shoot": pygame.K_d
     }
 
-    # ─────────────────────────────────────────────
+
     # GETTERS
-    # ─────────────────────────────────────────────
+
 
     # Pantalla
     @classmethod

@@ -1,6 +1,5 @@
 import pygame
 from Configurations import Configurations
-
 class Winner:
     """
     Clase que representa la animación de victoria del juego.

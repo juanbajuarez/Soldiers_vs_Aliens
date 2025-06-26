@@ -17,7 +17,7 @@ class PowerUp(Sprite):
         self.rect = self.image.get_rect()
         screen_rect = screen.get_rect()
         self.rect.y = power_up_size[1] * randint(0, (screen.get_height() // power_up_size[1] - 1))
-        self.rect.x = -power_up_size[0]  # empieza fuera de pantalla a la izquierda
+        self.rect.x = -power_up_size[0]
 
         # Movimiento
         self._rect_x = float(self.rect.x)

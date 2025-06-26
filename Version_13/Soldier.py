@@ -7,9 +7,8 @@ class Soldier(Sprite):
     Clase que representa un soldado (personaje principal).
     """
 
-    # ─────────────────────────────────────────────
-    # 1. Constructor
-    # ─────────────────────────────────────────────
+    # Constructor
+
     def __init__(self, screen: pygame.surface.Surface):
         """
         Constructor del soldado.
@@ -22,7 +21,8 @@ class Soldier(Sprite):
         self._is_moving_down = False
         self._is_shooting = False
         self._is_live = True
-        # ─── Power-up de disparo infinito ───
+
+        # Power-up de disparo infinito
         self._infinite_shoot = False
         self._infinite_end_time = 0
 
@@ -68,17 +68,17 @@ class Soldier(Sprite):
         self._rect_y = float(self.rect.y)
         self._speed = Configurations.get_soldier_speed()
 
-    # ─────────────────────────────────────────────
-    # MÉTOD0 EXTRA: Activar power‑up de disparo infinito
-    # ─────────────────────────────────────────────
+
+    # Activar power‑up de disparo infinito
+
     def activate_infinite_shoot(self, duration_ms: int) -> None:
         """Activa el disparo infinito durante *duration_ms* milisegundos."""
         self._infinite_shoot = True
         self._infinite_end_time = pygame.time.get_ticks() + duration_ms
 
-    # ─────────────────────────────────────────────
-    # 2. Movimiento del soldado
-    # ─────────────────────────────────────────────
+
+    # Movimiento del soldado
+
     def update_position(self, screen: pygame.surface.Surface) -> None:
         """
         Actualiza la posición del soldado en pantalla.
@@ -86,7 +86,7 @@ class Soldier(Sprite):
         if not self.is_live:
             return
 
-        # ─── Comprobar expiración del power‑up ───
+        # Comprobar expiración del power‑up
         if self._infinite_shoot and pygame.time.get_ticks() > self._infinite_end_time:
             self._infinite_shoot = False
 
@@ -104,9 +104,9 @@ class Soldier(Sprite):
 
         self.rect.y = int(self._rect_y)
 
-    # ─────────────────────────────────────────────
-    # 3. Animación del soldado
-    # ─────────────────────────────────────────────
+
+    # Animación del soldado
+
     def update_animation(self) -> None:
         """
         Actualiza la animación del soldado.
@@ -131,9 +131,9 @@ class Soldier(Sprite):
             elif self._is_shooting and self._frame_index == 1:
                 self._is_shooting = False
 
-    # ─────────────────────────────────────────────
-    # 4. Disparo del soldado
-    # ─────────────────────────────────────────────
+
+    # Disparo del soldado
+
     def shoots(self) -> None:
         """
         Indica que el soldado ha disparado.
@@ -143,18 +143,18 @@ class Soldier(Sprite):
         self._frame_index = sheet_frames_per_row
         self._last_update_time = pygame.time.get_ticks()
 
-    # ─────────────────────────────────────────────
-    # 5. Dibujar en pantalla
-    # ─────────────────────────────────────────────
+
+    # Dibujar en pantalla
+
     def blit(self, screen: pygame.surface.Surface) -> None:
         """
         Dibuja el soldado en pantalla.
         """
         screen.blit(self.image, self.rect)
 
-    # ─────────────────────────────────────────────
-    # 6. Getters y Setters
-    # ─────────────────────────────────────────────
+
+    # Getters y Setters
+
     @property
     def is_moving_up(self) -> bool:
         return self._is_moving_up

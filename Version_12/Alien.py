@@ -17,14 +17,13 @@ class Alien(Sprite):
         """
         super().__init__()
 
-        # ────── 1. Movimiento inicial aleatorio (sube o baja) ──────
+        # Movimiento inicial aleatorio (sube o baja)
         movement_bool_value = choice([True, False])
         self._is_moving_up = movement_bool_value
         self._is_moving_down = not movement_bool_value
 
-        # ────── 2. Cargar hoja de sprites aleatoria y cortar frames ──────
+        # Cargar hoja de sprites aleatoria y cortar frames
         self._frames = []
-
         sheet_path = choice(Configurations.get_aliens_sheets())
         alien_sheet = pygame.image.load(sheet_path)
 
@@ -44,13 +43,13 @@ class Alien(Sprite):
             frame = pygame.transform.scale(frame, alien_frame_size)
             self._frames.append(frame)
 
-        # ────── 3. Inicialización de animación ──────
+        # Inicialización de animación
         self._last_update_time = pygame.time.get_ticks()
         self._frame_index = 0
         self.image = self._frames[self._frame_index]
         self._frame_index = 1  # siguiente frame
 
-        # ────── 4. Posicionamiento inicial (fuera del borde izquierdo, vertical aleatoria) ──────
+        # Posicionamiento inicial
         self.rect = self.image.get_rect()
         screen_rect = screen.get_rect()
 
@@ -60,13 +59,12 @@ class Alien(Sprite):
         self._rect_y = float(self.rect.y)
         self._rect_x = float(self.rect.x)
 
-        # ────── 5. Velocidades con factor aleatorio ──────
+        # Velocidades con factor aleatorio
         self._speed_x = Configurations.get_alien_speed_x() * uniform(0.2, 0.8)
         self._speed_y = Configurations.get_alien_speed_y() * uniform(2.0, 2.5)
 
-    # ─────────────────────────────────────────────────────────────────────────────
-    # MÉTODOS DE MOVIMIENTO Y ANIMACIÓN
-    # ─────────────────────────────────────────────────────────────────────────────
+
+    # MOVIMIENTOS Y ANIMACIÓNES
 
     def update_position(self, screen: pygame.surface.Surface) -> None:
         """
@@ -85,7 +83,7 @@ class Alien(Sprite):
         elif self._is_moving_down:
             self._rect_y += self._speed_y
 
-        # Rebote contra los bordes superior/inferior
+        # Rebote contra los bordes
         if self._rect_y < float(screen_rect.top):
             self._rect_y = float(screen_rect.y)
             self.is_moving_down = True
@@ -121,9 +119,7 @@ class Alien(Sprite):
         """
         screen.blit(self.image, self.rect)
 
-    # ─────────────────────────────────────────────────────────────────────────────
-    # GETTERS y SETTERS para banderas de movimiento
-    # ─────────────────────────────────────────────────────────────────────────────
+    # GETTERS y SETTERS
 
     @property
     def is_moving_up(self) -> bool:

@@ -7,9 +7,9 @@ class Score:
     Encargada de contar, actualizar y mostrar los puntos en pantalla.
     """
 
-    # ─────────────────────────────────────────────
-    # 1. Constructor: inicialización del marcador
-    # ─────────────────────────────────────────────
+
+    # Inicialización del marcador
+
     def __init__(self):
         """
         Inicializa el marcador con puntaje 0 y configura la fuente, color y posición.
@@ -19,9 +19,8 @@ class Score:
         self._text_color = Configurations.get_score_text_color()
         self._position = Configurations.get_score_position()
 
-    # ─────────────────────────────────────────────
-    # 2. Métodos de control de puntaje
-    # ─────────────────────────────────────────────
+
+    # Control de puntaje
     def increase(self) -> None:
         """Incrementa el contador de puntaje en 1."""
         self._score += 1
@@ -30,9 +29,7 @@ class Score:
         """Reinicia el contador de puntaje a 0."""
         self._score = 0
 
-    # ─────────────────────────────────────────────
-    # 3. Métod0 de renderizado del marcador
-    # ─────────────────────────────────────────────
+    # Dibuja el marcador
     def draw(self, screen: pygame.Surface) -> None:
         """
         Dibuja el texto del marcador en pantalla.
@@ -42,9 +39,8 @@ class Score:
         text_surface = self._font.render(score_text, True, self._text_color)
         screen.blit(text_surface, self._position)
 
-    # ─────────────────────────────────────────────
-    # 4. Getters y Setters
-    # ─────────────────────────────────────────────
+
+    # Getters y Setters
     @property
     def score(self) -> int:
         """Devuelve el valor actual del puntaje."""

@@ -93,7 +93,7 @@ def check_collisions(screen: pygame.Surface,
         soldier2.is_live = False
         audio.play_sound('game_over')
 
-    # 🚀 Colisiones jugador vs powerup
+    # Colisiones jugador vs powerup
     for pu in powerups.copy():
         if soldier.is_live and pu.rect.colliderect(soldier.rect):
             soldier.activate_infinite_shoot(Configurations.get_time_power_up())
